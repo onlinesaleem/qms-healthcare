@@ -1,0 +1,23 @@
+/* src/components/Header.module.css */
+.header {
+    background-color: #333;
+    padding: 10px 20px;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navLink:hover {
+    color: #ddd;
+  }
