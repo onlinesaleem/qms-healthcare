@@ -7,13 +7,13 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main className="container">
-          {children}
-        </main>
-        <footer>
-          <p>&copy; 2024 QMS Healthcare. All rights reserved.</p>
-        </footer>
+        <div className="siteContainer">
+          <Header />
+          <main className="contentContainer">{children}</main>
+          <footer className="footer">
+            <p>&copy; 2024 QMS Healthcare. All rights reserved.</p>
+          </footer>
+        </div>
       </body>
     </html>
   );

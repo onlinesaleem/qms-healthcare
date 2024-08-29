@@ -1,23 +1,38 @@
-/* src/components/Header.module.css */
 .header {
-    background-color: #333;
-    padding: 10px 20px;
-  }
-  
-  .nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .navLink {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .navLink:hover {
-    color: #ddd;
-  }
+  background-color: #4B0082; /* Deep Purple */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 40px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.navLink {
+  color: #008080; /* Teal */
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: #20B2AA; /* Light Sea Green */
+  border-bottom: 2px solid #20B2AA;
+}
