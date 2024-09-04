@@ -1,4 +1,4 @@
-"use client"; // Add this directive to mark this file as a client component
+"use client";
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,16 +16,32 @@ const Header = () => {
         </Link>
       </div>
       <nav className={styles.nav}>
-        <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}>
+        <Link
+          href="/"
+          className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}
+          scroll={false}
+        >
           Home
         </Link>
-        <Link href="/about" className={`${styles.navLink} ${pathname === '/about' ? styles.active : ''}`}>
+        <Link
+          href="/about"
+          className={`${styles.navLink} ${pathname === '/about' ? styles.active : ''}`}
+          scroll={false}
+        >
           About
         </Link>
-        <Link href="/services" className={`${styles.navLink} ${pathname === '/services' ? styles.active : ''}`}>
+        <Link
+          href="/services"
+          className={`${styles.navLink} ${pathname === '/services' ? styles.active : ''}`}
+          scroll={false}
+        >
           Products & Services
         </Link>
-        <Link href="/contact" className={`${styles.navLink} ${pathname === '/contact' ? styles.active : ''}`}>
+        <Link
+          href="/contact"
+          className={`${styles.navLink} ${pathname === '/contact' ? styles.active : ''}`}
+          scroll={false}
+        >
           Contact
         </Link>
       </nav>

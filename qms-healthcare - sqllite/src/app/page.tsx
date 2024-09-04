@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Home.module.css';
 import axios from 'axios';
+import Image from 'next/image';
 import HeroSection from '@/components/Hero';
 
 interface PageContent {
@@ -45,9 +46,12 @@ export default function HomePage() {
             <h2 className={styles.title}>{item.title}</h2>
             <p className={styles.content}>{item.content}</p>
             {item.imageUrl && (
-              <img
+              <Image
                 src={item.imageUrl}
                 alt={item.title}
+                layout="responsive"
+                width={800}
+                height={450}
                 className={styles.image}
               />
             )}

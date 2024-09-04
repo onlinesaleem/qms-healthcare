@@ -1,6 +1,6 @@
 "use client"; // Ensure this is a client-side component
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { CheckCircleIcon } from '@heroicons/react/16/solid';
@@ -19,6 +19,30 @@ const AdminPage = () => {
   const router = useRouter();
   const { user, loading } = useAuth();
 
+  const handleError = (error: any) => {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 403) {
+        setMessage('Session expired. Please log in again.');
+        localStorage.removeItem('token');
+        router.push('/login');
+      } else {
+        console.error('Error:', error);
+        setMessage('An error occurred. Please try again.');
+      }
+    }
+  };
+
+  const fetchContent = useCallback(async () => {
+    try {
+      const response = await axios.get('/api/admin/content', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      setContent(response.data);
+    } catch (error) {
+      handleError(error);
+    }
+  }, [handleError]);
+
   useEffect(() => {
     if (loading) {
       console.log("Still loading, waiting for authentication.");
@@ -32,18 +56,7 @@ const AdminPage = () => {
       console.log("User is authenticated, fetching content.");
       fetchContent();
     }
-  }, [user, loading, router]);
-
-  const fetchContent = async () => {
-    try {
-      const response = await axios.get('/api/admin/content', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
-      setContent(response.data);
-    } catch (error) {
-      handleError(error);
-    } 
-  };
+  }, [user, loading, router, fetchContent]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,12 +100,13 @@ const AdminPage = () => {
         });
         if (imageFile) {
           const formData = new FormData();
-        await axios.post('/api/admin/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            // Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        });}
+          await axios.post('/api/admin/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              // Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          });
+        }
         setMessage('Content updated successfully!');
       } else {
         await axios.post('/api/admin/content', contentData, {
@@ -126,19 +140,6 @@ const AdminPage = () => {
       fetchContent();
     } catch (error) {
       handleError(error);
-    }
-  };
-
-  const handleError = (error: any) => {
-    if (axios.isAxiosError(error)) {
-      if (error.response?.status === 403) {
-        setMessage('Session expired. Please log in again.');
-        localStorage.removeItem('token');
-        router.push('/login');
-      } else {
-        console.error('Error:', error);
-        setMessage('An error occurred. Please try again.');
-      }
     }
   };
 

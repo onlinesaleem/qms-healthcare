@@ -32,7 +32,7 @@ const ContactPage = () => {
     <div className={styles.pageWrapper}>
       <header className={styles.header}>
         <h1>Contact Us</h1>
-        <p>We'd love to hear from you. Reach out with any questions, comments, or feedback!</p>
+        <p>We&apos;d love to hear from you. Reach out with any questions, comments, or feedback!</p>
       </header>
 
       <div className={styles.contactInfoWrapper}>

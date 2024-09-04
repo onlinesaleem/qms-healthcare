@@ -1,38 +1,55 @@
+.aboutPage {
+  background-color: #f7f7f7;
+  padding: 60px 20px;
+}
+
 .aboutContainer {
   background-color: #fff;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 100%;
+  margin: 20px auto;
   color: #333;
   line-height: 1.6;
 }
 
-.aboutContainer h1 {
+.imageWrapper {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
   font-size: 2.5rem;
-  color: #3a0ca3; /* Purple for headings */
+  color: #3a0ca3;
   margin-bottom: 20px;
   border-bottom: 2px solid #3a0ca3;
   padding-bottom: 10px;
+  text-align: center;
 }
 
-.aboutContainer p {
+.content {
   font-size: 1.2rem;
   margin-bottom: 15px;
-  color: #0e7490; /* Teal for text */
+  color: #0e7490;
 }
 
-.aboutContainer p:last-of-type {
+.content:last-of-type {
   margin-bottom: 0;
 }
 
-.aboutContainer a {
+.link {
   color: #3a0ca3;
   text-decoration: underline;
   transition: color 0.3s ease;
 }
 
-.aboutContainer a:hover {
+.link:hover {
   color: #0e7490;
 }
